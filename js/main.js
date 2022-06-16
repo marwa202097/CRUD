@@ -3,6 +3,8 @@ var ProductPrice=document.getElementById('ProductPrice');
 var ProductCtegory=document.getElementById('ProductCtegory')
 var ProductDesc=document.getElementById('ProductDesc');
 var addBtn=document.getElementById('addBtn');
+nameAlert=document.getElementById('nameAlert');
+priceAlert = document.getElementById('priceAlert')
 var currentIndex=0;
 addBtn.onclick=function()
 {
@@ -121,13 +123,35 @@ ProductName.onkeyup= function()
     if(nameRejex.test(ProductName.value))
     {
         addBtn.removeAttribute('disabled');
-        ProductName.classList.add('is-valid')
-        ProductName.classList.remove('is-invalid')
+        ProductName.classList.add('is-valid');
+        ProductName.classList.remove('is-invalid');
+        nameAlert.classList.add('d-none')
+
     }
     else
     {
         addBtn.disabled='true';
         ProductName.classList.remove('is-valid')
-        ProductName.classList.add('is-invalid')
+        ProductName.classList.add('is-invalid');
+        nameAlert.classList.remove('d-none')
+    }
+}
+ProductPrice.onkeyup = function()
+{
+    var priceRejex= /^[0-9]{2,6}$/g;
+    if(priceRejex.test(ProductPrice.value))
+    {
+        addBtn.removeAttribute('disabled');
+        ProductPrice.classList.add('is-valid');
+        ProductPrice.classList.remove('is-invalid');
+        priceAlert.classList.add('d-none')
+
+    }
+    else
+    {
+        addBtn.disabled='true';
+        ProductPrice.classList.remove('is-valid')
+        ProductPrice.classList.add('is-invalid');
+        priceAlert.classList.remove('d-none')
     }
 }
